@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoApp</title>
+    <link rel= "stylesheet" href="style.css">
+</head>
+<body>
+
+    
+    <div class="task">
+        <div>
+            <label for="">To Do List App </label>
+            <form action="/fish" id="fish">
+                
+                
+                <input type="text" id="item-name" placeholder="Enter Task Title">
+            
+                <button id="submit" type="submit" onclick="addItem(event)">add</button>
+            </form>
+        </div>
+        <div class="list">
+        <ul id ="parent">
+           
+        
+        </ul>
+    </div>
+    </div>
+    
+</body>
+<script defer>
+        
+    
+
+    function addItem(event){
+    
+        event.preventDefault()
+        let itemName = document.getElementById("item-name").value
+        let list = document.getElementById("parent")
+        let node = document.createElement("li");
+        let buttonNode =  document.createElement("button")
+        let buttonText = document.createTextNode("Remove")
+
+        const textnode = document.createTextNode(itemName);
+        node.appendChild(textnode);
+        buttonNode.appendChild(buttonText)
+        node.appendChild(buttonNode);
+        
+        document.getElementById("parent").appendChild(node);
+        console.log(itemName)
+
+        buttonNode.addEventListener("click",function(item){
+            node.remove()
+        })
+    }
+
+    let parentList = document.getElementById("parent").children
+    let array = [ ...parentList ];
+
+    console.log(array)
+    array.forEach(function(item){
+        console.log(item)
+    })
+
+</script>
+
+</html>
